@@ -1,0 +1,47 @@
+# 通用部署：GitHub Pages + Surge（域名 = 仓库名小写.surge.sh）
+# 依赖组织级 Secret：PAGES_TOKEN（自动开启 Pages）、SURGE_TOKEN
+name: deploy
+on: { push: { branches: [main] }, workflow_dispatch: {} }
+permissions: { contents: write, pages: write, id-token: write }
+concurrency: { group: deploy, cancel-in-progress: true }
+jobs:
+  readme:
+    if: github.event.repository.is_template == false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fill README links from repo name
+        run: |
+          grep -q '{{REPO}}' README.md || exit 0
+          R="${{ github.event.repository.name }}"; O="${{ github.repository_owner }}"
+          L=$(echo "$R" | tr 'A-Z' 'a-z'); LO=$(echo "$O" | tr 'A-Z' 'a-z')
+          sed -i "s#{{REPO}}#$R#g; s#{{REPO_LC}}#$L#g; s#{{OWNER}}#$O#g; s#{{OWNER_LC}}#$LO#g" README.md
+          git config user.name github-actions; git config user.email github-actions@users.noreply.github.com
+          git commit -am "docs: fill deploy links" && git push
+  pages:
+    if: github.event.repository.is_template == false
+    runs-on: ubuntu-latest
+    environment: { name: github-pages, url: "${{ steps.d.outputs.page_url }}" }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+        with: { enablement: true, token: "${{ secrets.PAGES_TOKEN }}" }
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: . }
+      - id: d
+        uses: actions/deploy-pages@v4
+  surge:
+    if: github.event.repository.is_template == false
+    runs-on: ubuntu-latest
+    env:
+      SURGE_TOKEN: "${{ secrets.SURGE_TOKEN }}"
+      REPO: "${{ github.event.repository.name }}"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to Surge
+        run: |
+          if [ -z "$SURGE_TOKEN" ]; then echo "::warning::SURGE_TOKEN not set"; exit 0; fi
+          DOMAIN="$(echo "$REPO" | tr 'A-Z' 'a-z').surge.sh"
+          rm -rf .git .github
+          npx --yes surge . "$DOMAIN" --token "$SURGE_TOKEN"
+          echo "Surge: https://$DOMAIN" >> "$GITHUB_STEP_SUMMARY"
