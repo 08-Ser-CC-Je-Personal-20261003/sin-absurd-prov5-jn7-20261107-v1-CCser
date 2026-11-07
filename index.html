@@ -1,1 +1,744 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>讲章</title></head><body><h1>讲章内容待填</h1></body></html>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>你看见罪是多么荒谬了吗</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* 布局：可隐藏毛玻璃目录 + 满宽正文。意象来自箴5:3-4 与 5:15：蜂蜜琥珀（罪的诱惑）、茵陈苦绿（罪的结局/恩典的活水）、墨色底 */
+:root{
+  --bg:#12110e; --bg2:#1b1914; --ink:#efe9dc; --muted:#a39c8c;
+  --steel:#86b6d8; --blood:#e35d5d; --gold:#f0b64a; --leaf:#7cc478; --violet:#b39cff; --sea:#5cc3c0;
+  --glass:rgba(255,255,255,.055); --glass2:rgba(255,255,255,.1); --line:rgba(255,255,255,.13);
+  --serif:"Noto Serif SC","Songti SC","SimSun",serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.85;margin:0;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+#fx{position:fixed;inset:0;z-index:0;pointer-events:none}
+#prog{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:3px;width:0;z-index:70;background:linear-gradient(90deg,var(--steel),var(--gold),var(--blood))}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;display:flex;align-items:center;gap:12px;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));background:rgba(18,17,14,.62);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border-bottom:1px solid var(--line)}
+.bar b{font-family:var(--serif);letter-spacing:.08em;font-size:15px}
+.bar .sp{flex:1}
+.btn{appearance:none;border:1px solid var(--line);background:var(--glass);color:var(--ink);border-radius:999px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer;transition:.25s}
+.btn:hover,.btn:focus-visible{background:var(--glass2);border-color:var(--gold);outline:none}
+.wrap{position:relative;z-index:1;display:flex}
+nav#toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 52px);align-self:flex-start;height:calc(100vh - 60px);overflow:auto;width:270px;flex:none;padding:18px 10px 40px 18px;background:rgba(27,25,20,.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-right:1px solid var(--line);transition:margin .35s ease,opacity .35s}
+body.hide-toc nav#toc{margin-left:-270px;opacity:0}
+nav#toc a{display:block;color:var(--muted);text-decoration:none;font-size:14px;padding:5px 10px;border-radius:8px;line-height:1.5;transition:.2s}
+nav#toc a.sub{padding-left:26px;font-size:13px}
+nav#toc a:hover{color:var(--ink);background:var(--glass)}
+nav#toc a.on{color:var(--bg);background:var(--gold);font-weight:700}
+nav#toc .h{font-size:11px;letter-spacing:.2em;color:var(--gold);margin:14px 10px 4px}
+main{flex:1;min-width:0;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 80px}
+@media (max-width:900px){nav#toc{position:fixed;left:0;top:calc(env(safe-area-inset-top,0px) + 50px);height:calc(100% - 50px);z-index:45;width:min(82vw,300px);background:rgba(22,20,16,.92)} body:not(.show-toc) nav#toc{margin-left:-110%;opacity:0} body.show-toc nav#toc{margin-left:0;opacity:1}}
+section{max-width:1180px;margin:0 auto;padding-block:56px 8px;scroll-margin-top:70px}
+.hero{max-width:1180px;margin:0 auto;padding-block:64px 26px;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center}
+@media(max-width:820px){.hero{grid-template-columns:1fr}}
+.eyebrow{font-size:12px;letter-spacing:.35em;color:var(--gold)}
+h1{font-family:var(--serif);font-weight:900;font-size:clamp(40px,7vw,84px);line-height:1.1;margin:.2em 0;text-wrap:balance}
+h1 .a{color:var(--steel)} h1 .b{color:var(--blood)}
+h1 small{display:block;font-size:.34em;color:var(--muted);font-weight:600;margin-top:.4em;letter-spacing:.06em}
+h2{font-family:var(--serif);font-size:clamp(26px,3.6vw,40px);line-height:1.25;margin:0 0 14px;text-wrap:balance}
+h2 .n{font-family:var(--mono);font-size:.5em;color:var(--gold);vertical-align:middle;margin-right:10px;border:1px solid var(--gold);border-radius:6px;padding:2px 8px}
+h3{font-family:var(--serif);font-size:22px;margin:26px 0 8px;color:#fff}
+p{margin:.6em 0;max-width:72ch}
+.lead{font-size:18px;color:#d6dce8}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.chip{font-size:13px;padding:4px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--line)}
+.c-s{border-color:var(--steel);color:var(--steel)}.c-b{border-color:var(--blood);color:var(--blood)}.c-g{border-color:var(--gold);color:var(--gold)}.c-l{border-color:var(--leaf);color:var(--leaf)}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:20px 22px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
+.grid>*{min-width:0}
+.k{font-size:12px;letter-spacing:.2em;color:var(--muted)}
+mark{background:linear-gradient(transparent 55%,rgba(242,192,99,.42) 55%);color:#fff;padding:0 2px}
+.hard{background:rgba(226,82,92,.12);border:1px dashed var(--blood);border-radius:12px;padding:12px 16px;margin:14px 0}
+.hard::before{content:"⚠ 难点  ";color:var(--blood);font-weight:700}
+.key{background:rgba(111,214,164,.1);border-left:4px solid var(--leaf);border-radius:0 12px 12px 0;padding:12px 16px;margin:14px 0}
+.key::before{content:"✦ 核心  ";color:var(--leaf);font-weight:700}
+.note{font-size:13.5px;color:var(--muted)}
+.verses{font-family:var(--serif);font-size:17px;line-height:2}
+.verses .v{display:block;padding:2px 10px;border-radius:8px;transition:background .3s}
+.verses .v:hover{background:var(--glass2)}
+.verses sup{font-family:var(--mono);color:var(--gold);font-size:11px;margin-right:6px}
+.vA{color:#cfe0f3}.vB{color:#ffc4c8}.vC{color:#c6f0db}.vD{color:#ffe3a8}
+.verses .sec{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.15em;color:var(--muted);margin:12px 10px 2px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:middle}
+.tbl{overflow-x:auto;border-radius:14px;border:1px solid var(--line);margin:14px 0}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14.5px}
+.tbl.s table{min-width:0}
+th,td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:rgba(242,192,99,.11);color:var(--gold);font-weight:700;white-space:nowrap}
+tr:hover td{background:var(--glass)}
+.fig{overflow-x:auto;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.025);padding:10px;margin:14px 0}
+.fig svg{display:block;width:100%;min-width:640px;height:auto}
+.fig figcaption{font-size:13px;color:var(--muted);padding:6px 8px 0}
+svg text{font-family:var(--sans)}
+.chain{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:16px 0}
+.chain .st{padding:10px 16px;border-radius:14px;font-family:var(--serif);font-weight:600;border:1px solid var(--line);background:var(--glass);animation:glow 5s infinite}
+.chain .st small{font-family:var(--sans);font-weight:400;color:var(--muted)}
+.chain .ar{color:var(--gold)}
+.chain .st:nth-child(3){animation-delay:1s}.chain .st:nth-child(5){animation-delay:2s}.chain .st:nth-child(7){animation-delay:3s}.chain .st:nth-child(9){animation-delay:4s}
+@keyframes glow{0%,70%,100%{box-shadow:none}35%{box-shadow:0 0 0 2px var(--gold),0 0 24px rgba(242,192,99,.45)}}
+/* 刀分开：互动对照 */
+.split{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.split>div{padding:18px 20px;min-width:0}
+.split .L{background:rgba(143,179,217,.1)} .split .R{background:rgba(226,82,92,.1)}
+.split .blade{width:6px;background:linear-gradient(var(--gold),#fff,var(--gold));box-shadow:0 0 18px var(--gold);animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 4px var(--gold)}}
+@media(max-width:640px){.split{grid-template-columns:1fr}.split .blade{width:auto;height:6px}}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 16px}
+.tab{appearance:none;font:inherit;cursor:pointer;padding:8px 16px;border-radius:12px;border:1px solid var(--line);background:var(--glass);color:var(--muted)}
+.tab[aria-selected="true"]{background:var(--gold);color:var(--bg);font-weight:700;border-color:var(--gold)}
+.flip{perspective:900px;height:170px;cursor:pointer}
+.flip .in{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:16px;display:flex;flex-direction:column;justify-content:center;border:1px solid var(--line);overflow:auto}
+.flip .f{background:linear-gradient(140deg,rgba(143,179,217,.2),rgba(169,155,255,.1));font-family:var(--serif);font-size:19px;font-weight:600}
+.flip .f small{font-family:var(--sans);font-size:12px;color:var(--muted);font-weight:400;margin-top:8px}
+.flip .b{background:linear-gradient(140deg,rgba(242,192,99,.2),rgba(226,82,92,.14));transform:rotateY(180deg);font-size:14.5px;line-height:1.7}
+details{border:1px solid var(--line);border-radius:14px;background:var(--glass);margin:10px 0;overflow:hidden}
+summary{cursor:pointer;padding:14px 18px;font-weight:700;list-style:none;display:flex;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"＋";color:var(--gold);font-family:var(--mono)}
+details[open] summary::before{content:"－"}
+details .ans{padding:0 18px 16px;border-top:1px dashed var(--line)}
+.badge{display:inline-block;font-size:12px;padding:1px 8px;border-radius:6px;margin-right:6px;font-weight:700}
+.bS{background:rgba(143,179,217,.2);color:var(--steel)}.bB{background:rgba(226,82,92,.2);color:var(--blood)}.bG{background:rgba(242,192,99,.2);color:var(--gold)}.bL{background:rgba(111,214,164,.2);color:var(--leaf)}
+.foot{max-width:1180px;margin:60px auto 0;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:20px}
+a{color:var(--steel)}
+.rv{transition:transform .7s ease,opacity .7s ease}.rv.pre{transform:translateY(14px);opacity:.55}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+.vD{color:#ffd98a}
+.quote-src{font-family:var(--serif);font-size:16.5px;line-height:2;color:#f3ead2;padding-top:12px}
+.quote-src .src{font-family:var(--sans);font-size:12.5px;color:var(--muted);margin-top:10px}
+.quote-src .q{color:var(--gold);font-weight:700}
+</style></head><body>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div id="prog"></div>
+<div class="bar">
+  <button class="btn" id="tocBtn" aria-controls="toc">☰ 目录</button>
+  <b>你看见罪是多么荒谬了吗？</b><span class="sp"></span>
+  <span class="chip c-g" style="font-size:12px">箴 5 · 约 7:45-52</span>
+</div>
+
+<div class="wrap">
+<nav id="toc" aria-label="目录">
+  <div class="h">导 引</div>
+  <a href="#top">🍯 题旨</a>
+  <a href="#worship">🎵 礼拜程序</a>
+  <div class="h">背 景</div>
+  <a href="#bg">📜 作者·受众·年代·处境</a>
+  <a href="#map" class="sub">🗺️ 地图</a>
+  <a href="#text">📖 经文（和合本）</a>
+  <a href="#ctx" class="sub">🧩 上下文</a>
+  <a href="#big">🔭 跳出框架：整本圣经</a>
+  <a href="#logic">🌀 罪的荒谬逻辑</a>
+  <div class="h">讲 章</div>
+  <a href="#p1">👮 一、他们对差役的回应</a>
+  <a href="#p2">🌙 二、他们对尼哥底母的回应</a>
+  <a href="#gospel">✝️ 荒谬的尽头：基督</a>
+  <a href="#parallel">🔗 类似经文</a>
+  <a href="#loop">♾️ 四重闭环</a>
+  <a href="#angles">🧭 多重视角</a>
+  <a href="#confess">🏛️ 信条原文</a>
+  <a href="#apply">🙏 应用</a>
+  <div class="h">温 习</div>
+  <a href="#one">💡 一句话总结</a>
+  <a href="#moved">❤️ 最感动的3点</a>
+  <a href="#qa">💬 讨论与答案</a>
+  <a href="#ext">🧱 拓展</a>
+  <a href="#mind">🧠 思维导图</a>
+  <a href="#cards">🃏 记忆卡</a>
+  <a href="#sum">✅ 总结列表</a>
+</nav>
+
+<main>
+<div class="hero" id="top">
+  <div>
+    <div class="eyebrow">CONTINENTAL REFORMED · SERMON</div>
+    <h1>你看见罪是<br>多么<span class="b">荒谬</span>了吗？</h1>
+    <p class="lead">淫妇的嘴"滴下蜂蜜"，结局"苦似茵陈"(箴5:3-4)。公会的首领手握律法，却在律法面前<mark>违背律法</mark>(约7:51)。罪最可怕的地方，不只是它邪恶，而是它<mark>愚蠢</mark>：明明是死路，人却称它为智慧；明明证据就在眼前，人却说"你也受了迷惑吗？"</p>
+    <div class="chips"><span class="chip c-g">🍯 蜂蜜的开头</span><span class="chip c-l">🌿 茵陈的结局</span><span class="chip c-s">👮 差役</span><span class="chip c-b">🌙 尼哥底母</span></div>
+  </div>
+  <div class="glass">
+    <div class="k">一句话记住</div>
+    <p style="font-family:var(--serif);font-size:21px;line-height:1.65;margin:.4em 0">罪让人<b style="color:var(--gold)">以甜为智</b>、<b style="color:var(--blood)">以权代理</b>、<b style="color:var(--steel)">以嘲讽代查考</b>；唯有<b style="color:var(--leaf)">那位"从来没有像他这样说话的"</b>能把人从荒谬中救出来。</p>
+    <div class="k" style="margin-top:12px">两个关键词</div>
+    <p>箴5:23 <b>"愚昧过甚"</b> · 约7:46 <b>"从来没有像他这样说话的"</b></p>
+  </div>
+</div>
+
+<section id="worship">
+  <h2><span class="n">00</span>礼拜程序</h2>
+  <div class="grid g4">
+    <div class="glass"><div class="k">诗歌</div><p>🎵 圣诗 第4首<br>🎵 韵诗 11篇<br>🎵 韵诗 7篇<br>🎵 韵诗 第1篇<br>🎵 圣诗 第9首</p></div>
+    <div class="glass"><div class="k">读经</div><p style="font-family:var(--serif);font-size:20px">📖 箴言 第5章</p></div>
+    <div class="glass"><div class="k">证经</div><p style="font-family:var(--serif);font-size:20px">📖 约翰福音 7:45-52</p></div>
+    <div class="glass"><div class="k">题目</div><p style="font-family:var(--serif);font-size:20px">你看见罪是多么荒谬了吗？</p></div>
+  </div>
+  <p class="note">诗篇第1篇是两条路（义人之路 / 恶人之路），正是箴言5章的骨架；诗篇第7篇和第11篇呼求"公义的审判者"，"恶人……掘了坑……竟掉在自己所挖的坑里"(诗7:15)，与箴5:22"恶人必被自己的罪孽捉住"同一个真理，也映照约7 中公会不公的审判。</p>
+</section>
+
+<section id="bg">
+  <h2><span class="n">01</span>真实背景：作者 · 受众 · 年代 · 处境</h2>
+  <div class="grid g2">
+    <div class="glass">
+      <div class="k">📖 箴言 5</div>
+      <div class="tbl s"><table>
+        <tr><th>作者</th><td>所罗门（箴1:1），以色列王，以智慧闻名（王上4:29-34）</td></tr>
+        <tr><th>年代</th><td>约主前 970–930 年；后由希西家的人誊录增编（箴25:1，约主前 700 年）</td></tr>
+        <tr><th>受众</th><td>"我儿"：父亲向儿子、王室教师向将要承担责任的年轻人传授智慧</td></tr>
+        <tr><th>体裁</th><td>箴1–9 是十篇"父训子"的长篇讲论；第5章是关于"淫妇"的第一篇警告（另见6:20-35；7）</td></tr>
+        <tr><th>讽刺</th><td>作者自己后来娶了七百妃、三百嫔，"他的妃嫔诱惑他的心"(王上11:3)。写下智慧的人，也败在这罪上：罪的荒谬连最智慧的人也不放过</td></tr>
+        <tr><th>深层含义</th><td>淫妇（"外女"）不只是道德问题，也象征拜偶像的属灵淫乱（何1–3；耶3），与"智慧妇人"(箴9)相对</td></tr>
+      </table></div>
+    </div>
+    <div class="glass">
+      <div class="k">📖 约翰福音 7:45-52</div>
+      <div class="tbl s"><table>
+        <tr><th>作者</th><td>使徒约翰，约主后 85–95 年写于以弗所</td></tr>
+        <tr><th>事件时间</th><td>约主后 29 年秋，住棚节"末日"(7:37)，离十字架约半年</td></tr>
+        <tr><th>地点</th><td>耶路撒冷，圣殿与公会（Sanhedrin，71 人的最高议会）</td></tr>
+        <tr><th>起因</th><td>7:32 祭司长和法利赛人打发差役（圣殿警卫，多为利未人）去捉拿耶稣；差役空手回来</td></tr>
+        <tr><th>人物</th><td><b>差役</b>：小人物，却说真话；<b>首领</b>：有权有学问，却说荒谬话；<b>尼哥底母</b>：公会成员，"从前去见耶稣的"(约3:1-2)</td></tr>
+        <tr><th>约翰的目的</th><td>"要叫你们信耶稣是基督"(20:31)；第7章展示人在基督面前的各种反应，以及不信的心如何自圆其说</td></tr>
+      </table></div>
+    </div>
+  </div>
+  <div class="key">两段经文用两个场景演出同一件事：<b>一个人明知道真理，却走进死路</b>。箴5 的少年人"在圣会里，几乎落在诸般恶中"(5:14)；约7 的首领正坐在以色列最高的"圣会"里，做着最不公义的事。罪的荒谬不在外邦的街头，而在神百姓的会堂中心。</div>
+  <div class="hard">约7:53–8:11（行淫时被拿的妇人）在许多早期抄本中不在这里，和合本以括号标示。它是否原属此处，学者有争议；但它的内容（淫乱、律法、审判、法利赛人的假冒为善）恰好把箴言5章与约7章连在一起。讲道时我们只以 7:45-52 为证经，不建立在这段经文上。</div>
+
+  <h3 id="map">🗺️ 地图：加利利真的"没有出过先知"吗？</h3>
+  <figure class="fig">
+  <svg viewBox="0 0 900 480" role="img" aria-label="加利利与犹太地图，标出出自加利利的先知">
+    <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#f0b64a"/></marker></defs>
+    <rect width="900" height="480" fill="#13120f"/>
+    <path d="M0,0 L170,0 C150,120 140,240 120,480 L0,480 Z" fill="#1d2c3b"/>
+    <text x="30" y="250" fill="#86b6d8" font-size="15" opacity=".8">大 海</text>
+    <ellipse cx="560" cy="130" rx="34" ry="52" fill="#244f63"/><text x="604" y="120" fill="#5cc3c0" font-size="13">加利利海</text>
+    <path d="M560,182 C550,250 565,330 555,410" stroke="#5cc3c0" stroke-width="3" fill="none"/>
+    <ellipse cx="555" cy="440" rx="22" ry="36" fill="#244f63"/><text x="585" y="450" fill="#5cc3c0" font-size="12">盐海</text>
+    <rect x="210" y="40" width="300" height="160" rx="18" fill="rgba(124,196,120,.07)" stroke="#7cc478" stroke-dasharray="5 5"/>
+    <text x="225" y="64" fill="#7cc478" font-size="15" font-weight="700">加利利 · "出不了先知"？</text>
+    <rect x="210" y="320" width="300" height="140" rx="18" fill="rgba(240,182,74,.07)" stroke="#f0b64a" stroke-dasharray="5 5"/>
+    <text x="225" y="345" fill="#f0b64a" font-size="15" font-weight="700">犹太 · 公会所在</text>
+    <g font-size="14" fill="#efe9dc">
+      <circle cx="420" cy="150" r="9" fill="#e35d5d"/><text x="300" y="132" font-weight="700" fill="#ffc7c0">迦特希弗 · 约拿</text>
+      <text x="275" y="175" font-size="12" fill="#a39c8c">王下14:25 "迦特希弗人……先知约拿"</text>
+      <circle cx="470" cy="110" r="6" fill="#7cc478"/><text x="455" y="95">拿撒勒</text>
+      <circle cx="530" cy="120" r="6" fill="#7cc478"/><text x="470" y="80">迦百农</text>
+      <circle cx="460" cy="390" r="10" fill="#f0b64a"/><text x="330" y="395" font-weight="700">耶路撒冷 · 公会</text>
+      <circle cx="450" cy="430" r="6" fill="#f0b64a"/><text x="370" y="440">伯利恒</text>
+      <circle cx="680" cy="250" r="7" fill="#b39cff"/><text x="695" y="245" fill="#d9ccff">提斯比 · 以利亚</text><text x="695" y="265" fill="#a39c8c" font-size="12">（基列，约旦河东）</text>
+    </g>
+    <path d="M460,382 C430,300 420,230 420,165" fill="none" stroke="#f0b64a" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#ah)"/>
+    <text x="250" y="265" fill="#f0b64a" font-size="13">"你且去查考"(约7:52)</text>
+    <text x="250" y="283" fill="#a39c8c" font-size="12">他们若真去查，就会在拿撒勒北边几公里处</text>
+    <text x="250" y="299" fill="#a39c8c" font-size="12">找到约拿的家乡；也会在伯利恒找到耶稣的出生</text>
+  </svg>
+  <figcaption>示意图，非比例尺。迦特希弗距拿撒勒约 5 公里。拉比传统还认为何西阿、那鸿也可能出自北方。</figcaption>
+  </figure>
+</section>
+
+<section id="text">
+  <h2><span class="n">02</span>经文（和合本）</h2>
+  <div class="legend"><span><i style="background:var(--gold)"></i>罪的诱惑（甜）</span><span><i style="background:var(--blood)"></i>罪的结局 / 荒谬</span><span><i style="background:var(--steel)"></i>智慧 / 真理的声音</span><span><i style="background:var(--leaf)"></i>恩典的出路</span></div>
+  <div class="grid g2" style="margin-top:12px">
+    <div class="glass verses">
+      <div class="k">读经 · 箴言 第5章</div>
+      <span class="sec">Ⅰ 甜的开头，苦的结局 v1-6</span>
+      <span class="v vA"><sup>1</sup>我儿，要留心我智慧的言语，侧耳听我聪明的话，</span>
+      <span class="v vA"><sup>2</sup>为要使你谨守谋略，嘴唇保存知识。</span>
+      <span class="v vD"><sup>3</sup>因为淫妇的嘴滴下蜂蜜；她的口比油更滑，</span>
+      <span class="v vB"><sup>4</sup>至终却苦似茵陈，快如两刃的刀。</span>
+      <span class="v vB"><sup>5</sup>她的脚下入死地；她脚步踏住阴间。</span>
+      <span class="v vB"><sup>6</sup>以致她找不着生命平坦的道；她的路变迁不定，自己还不知道。</span>
+      <span class="sec">Ⅱ 远离，否则悔恨 v7-14</span>
+      <span class="v vA"><sup>7</sup>众子啊，现在要听从我；不可离弃我口中的话。</span>
+      <span class="v vA"><sup>8</sup>你所行的道要离她远，不可就近她的房门，</span>
+      <span class="v vB"><sup>9</sup>恐怕将你的尊荣给别人，将你的岁月给残忍的人；</span>
+      <span class="v vB"><sup>10</sup>恐怕外人满得你的力量，你劳碌得来的，归入外人的家；</span>
+      <span class="v vB"><sup>11</sup>终久，你皮肉和身体消毁，你就悲叹，</span>
+      <span class="v vB"><sup>12</sup>说：我怎么恨恶训诲，心中藐视责备，</span>
+      <span class="v vB"><sup>13</sup>也不听从我师傅的话，又不侧耳听那教训我的人？</span>
+      <span class="v vB"><sup>14</sup>我在圣会里，几乎落在诸般恶中。</span>
+      <span class="sec">Ⅲ 自己井里的活水 v15-20</span>
+      <span class="v vC"><sup>15</sup>你要喝自己池中的水，饮自己井里的活水。</span>
+      <span class="v vC"><sup>16</sup>你的泉源岂可涨溢在外？你的河水岂可流在街上？</span>
+      <span class="v vC"><sup>17</sup>惟独归你一人，不可与外人同用。</span>
+      <span class="v vC"><sup>18</sup>要使你的泉源蒙福；要喜悦你幼年所娶的妻。</span>
+      <span class="v vC"><sup>19</sup>她如可爱的麀鹿，可喜的母鹿；愿她的胸怀使你时时知足，她的爱情使你常常恋慕。</span>
+      <span class="v vD"><sup>20</sup>我儿，你为何恋慕淫妇？为何抱外女的胸怀？</span>
+      <span class="sec">Ⅳ 神的眼目与罪的绳索 v21-23</span>
+      <span class="v vA"><sup>21</sup>因为，人所行的道都在耶和华眼前；他也修平人一切的路。</span>
+      <span class="v vB"><sup>22</sup>恶人必被自己的罪孽捉住；他必被自己的罪恶如绳索缠绕。</span>
+      <span class="v vB"><sup>23</sup>他因不受训诲就必死亡，又因愚昧过甚，便走差了路。</span>
+    </div>
+    <div>
+      <div class="glass verses">
+        <div class="k">证经 · 约翰福音 7:45-52</div>
+        <span class="v vB"><sup>45</sup>差役回到祭司长和法利赛人那里，他们对差役说："你们为什么没有带他来呢？"</span>
+        <span class="v vA"><sup>46</sup>差役回答说："从来没有像他这样说话的。"</span>
+        <span class="v vB"><sup>47</sup>法利赛人说："你们也受了迷惑吗？</span>
+        <span class="v vB"><sup>48</sup>官长或是法利赛人岂有信他的呢？</span>
+        <span class="v vB"><sup>49</sup>但这些不明白律法的百姓是被咒诅的。"</span>
+        <span class="v vC"><sup>50</sup>内中有尼哥底母，就是从前去见耶稣的，对他们说：</span>
+        <span class="v vA"><sup>51</sup>"不先听本人的口供，不知道他所做的事，难道我们的律法还定他的罪吗？"</span>
+        <span class="v vB"><sup>52</sup>他们回答说："你也是出于加利利吗？你且去查考，就可知道加利利没有出过先知。"</span>
+      </div>
+      <h3>🎭 舞台上的三组人</h3>
+      <div class="tbl s"><table>
+        <tr><th>人物</th><th>身份</th><th>说的话</th><th>真相</th></tr>
+        <tr><td><span class="badge bS">差役</span></td><td>地位低、奉命行事</td><td>"从来没有像他这样说话的"</td><td>说出真理</td></tr>
+        <tr><td><span class="badge bB">首领</span></td><td>祭司长、法利赛人</td><td>迷惑？咒诅？加利利？</td><td>说出荒谬</td></tr>
+        <tr><td><span class="badge bL">尼哥底母</span></td><td>公会成员、以色列的先生(约3:10)</td><td>"难道我们的律法还定他的罪吗？"</td><td>说出公道</td></tr>
+      </table></div>
+      <div class="key">第48节"官长或是法利赛人岂有信他的呢？"话音刚落，第50节就站出来一位<b>官长，又是法利赛人</b>。约翰用这样的并置，让首领们的话当场被推翻。</div>
+    </div>
+  </div>
+
+  <h3 id="ctx">🧩 上下文</h3>
+  <figure class="fig">
+  <svg viewBox="0 0 1000 190" role="img" aria-label="约翰福音7章流程">
+    <g font-size="13.5" text-anchor="middle">
+      <rect x="10" y="40" width="180" height="90" rx="14" fill="rgba(134,182,216,.14)" stroke="#86b6d8"/><text x="100" y="70" fill="#cfe3f2" font-weight="700" font-size="15">7:1-13</text><text x="100" y="93" fill="#efe9dc">弟兄们不信</text><text x="100" y="113" fill="#a39c8c">暗暗上去过节</text>
+      <rect x="205" y="40" width="180" height="90" rx="14" fill="rgba(240,182,74,.14)" stroke="#f0b64a"/><text x="295" y="70" fill="#ffe2a6" font-weight="700" font-size="15">7:14-36</text><text x="295" y="93" fill="#efe9dc">殿中教训</text><text x="295" y="113" fill="#a39c8c">7:32 差役被派出</text>
+      <rect x="400" y="40" width="180" height="90" rx="14" fill="rgba(124,196,120,.14)" stroke="#7cc478"/><text x="490" y="70" fill="#cdeccb" font-weight="700" font-size="15">7:37-39</text><text x="490" y="93" fill="#efe9dc">"人若渴了"</text><text x="490" y="113" fill="#a39c8c">活水的江河</text>
+      <rect x="595" y="40" width="180" height="90" rx="14" fill="rgba(179,156,255,.14)" stroke="#b39cff"/><text x="685" y="70" fill="#e1d6ff" font-weight="700" font-size="15">7:40-44</text><text x="685" y="93" fill="#efe9dc">众人纷争</text><text x="685" y="113" fill="#a39c8c">"无人下手"</text>
+      <rect x="790" y="40" width="200" height="90" rx="14" fill="rgba(227,93,93,.16)" stroke="#e35d5d" stroke-width="2"/><text x="890" y="70" fill="#ffc7c0" font-weight="700" font-size="15">7:45-52 本段</text><text x="890" y="93" fill="#efe9dc">公会的荒谬</text><text x="890" y="113" fill="#a39c8c">差役·尼哥底母</text>
+    </g>
+    <text x="500" y="172" fill="#f0b64a" font-size="13" text-anchor="middle">耶稣刚邀请人来喝活水（7:37），首领们却在开会如何捉拿他——正像箴5:15 劝人喝自己井里的活水，人偏去喝淫妇的"蜂蜜"</text>
+  </svg>
+  </figure>
+  <p>前文：上一讲（7:40-44）众人因耶稣起了纷争。后文：8:12 "我是世界的光"；8:44 "你们是出于你们的父魔鬼"——不信的根源被揭开。尼哥底母的线索：3:1-21 夜里来访 → 7:50-51 为公义发声 → 19:39 公开为耶稣安葬，带来约一百斤没药沉香。<mark>恩典把一个在黑夜里的人，一步步带到光中。</mark></p>
+</section>
+
+<section id="big">
+  <h2><span class="n">03</span>跳出框架：在整本圣经中的位置</h2>
+  <p>"罪是愚昧"是圣经一贯的判断。箴言用"愚昧人"(kesil, ewil)称呼罪人；诗14:1"愚顽人心里说：没有神"；罗1:22"自称为聪明，反成了愚拙"。罪从伊甸园开始就是一场荒谬的交换：为了一个果子，放弃神的面光。</p>
+  <figure class="fig">
+  <svg viewBox="0 0 1000 250" role="img" aria-label="救赎历史中罪的荒谬">
+    <defs><linearGradient id="tl" x1="0" x2="1"><stop offset="0" stop-color="#f0b64a"/><stop offset=".6" stop-color="#e35d5d"/><stop offset="1" stop-color="#7cc478"/></linearGradient></defs>
+    <line x1="40" y1="120" x2="960" y2="120" stroke="url(#tl)" stroke-width="6" stroke-linecap="round"/>
+    <g font-size="14" fill="#efe9dc" text-anchor="middle">
+      <circle cx="60" cy="120" r="10" fill="#f0b64a"/><text x="60" y="95">创3</text><text x="60" y="150" font-size="12" fill="#a39c8c">"悦人的眼目"</text>
+      <circle cx="165" cy="120" r="9" fill="#f0b64a"/><text x="165" y="95">以扫</text><text x="165" y="150" font-size="12" fill="#a39c8c">一碗汤换长子名分</text>
+      <circle cx="270" cy="120" r="9" fill="#f0b64a"/><text x="270" y="95">出32</text><text x="270" y="150" font-size="12" fill="#a39c8c">金牛犊</text>
+      <circle cx="375" cy="120" r="9" fill="#e35d5d"/><text x="375" y="95">箴5</text><text x="375" y="150" font-size="12" fill="#ffc7c0">蜂蜜→茵陈</text>
+      <circle cx="475" cy="120" r="9" fill="#e35d5d"/><text x="475" y="95">耶2:13</text><text x="475" y="150" font-size="12" fill="#a39c8c">离弃活水，凿破池子</text>
+      <circle cx="580" cy="120" r="9" fill="#e35d5d"/><text x="580" y="95">何1–3</text><text x="580" y="150" font-size="12" fill="#a39c8c">以色列的淫乱</text>
+      <circle cx="690" cy="120" r="13" fill="#fff"/><text x="690" y="92" font-weight="700">约7:45-52</text><text x="690" y="152" font-size="12" fill="#fff">首领拒绝真理</text>
+      <circle cx="800" cy="120" r="13" fill="#e35d5d"/><text x="800" y="92" font-weight="700">十字架</text><text x="800" y="152" font-size="12" fill="#ffc7c0">最荒谬的审判</text>
+      <circle cx="905" cy="120" r="12" fill="#7cc478"/><text x="905" y="95">羔羊婚筵</text><text x="905" y="150" font-size="12" fill="#cdeccb">启19:7</text>
+    </g>
+    <text x="500" y="215" fill="#f0b64a" font-size="13" text-anchor="middle">从果子到十字架：罪的荒谬在"杀害生命的主"(徒3:15)时达到顶点；恩典也在同一处显出最大的智慧</text>
+  </svg>
+  </figure>
+  <div class="grid g3">
+    <div class="glass"><div class="k">💧 活水主题</div><p>箴5:15"饮自己井里的活水" → 耶2:13 神是"活水的泉源"，百姓却凿破池子 → 约4:14 "我所赐的水，要在他里头成为泉源" → 约7:37-38 "人若渴了，可以到我这里来喝" → 启22:17 "白白取生命的水喝"。</p></div>
+    <div class="glass"><div class="k">💍 婚约主题</div><p>箴5:18 "要喜悦你幼年所娶的妻"；神与以色列的约是婚约（耶2:2；结16）；拜偶像是淫乱（何2）；基督是新郎（约3:29），教会是新妇（弗5:25-32）。<b>罪是对最好的爱的背叛。</b></p></div>
+    <div class="glass"><div class="k">⚖️ 审判主题</div><p>律法要求公正审讯（申1:16-17；17:4；19:18"审判官要细细地查究"）。约7 的首领违背它；最后在耶稣受审时彻底践踏它（可14:55-59 假见证）。<b>真正的审判者被人不公地审判。</b></p></div>
+  </div>
+</section>
+
+<section id="logic">
+  <h2><span class="n">04</span>🌀 罪的荒谬逻辑：五个特征</h2>
+  <p>把两段经文放在一起，罪的"思路"清清楚楚：</p>
+  <div class="chain">
+    <span class="st" style="color:#ffe2a6">🍯 以甜为真<br><small>箴5:3</small></span><span class="ar">➜</span>
+    <span class="st" style="color:#cfe3f2">🙈 看不见结局<br><small>箴5:6 "自己还不知道"</small></span><span class="ar">➜</span>
+    <span class="st" style="color:#ffc7c0">🗣️ 拒绝证据<br><small>约7:47</small></span><span class="ar">➜</span>
+    <span class="st" style="color:#e1d6ff">🎭 攻击说真话的人<br><small>约7:52</small></span><span class="ar">➜</span>
+    <span class="st" style="color:#fff">🪢 被自己捆住<br><small>箴5:22</small></span>
+  </div>
+  <div class="tbl"><table>
+    <tr><th>特征</th><th>箴言 5</th><th>约翰福音 7</th><th>为什么荒谬</th></tr>
+    <tr><td>① 用感觉代替真理</td><td>"嘴滴下蜂蜜……比油更滑"</td><td>"官长岂有信他的？"（以人数与地位为真理）</td><td>甜与多数都不能证明对</td></tr>
+    <tr><td>② 看不见自己的方向</td><td>"她的路变迁不定，自己还不知道"(v6)</td><td>首领们以为在保护律法，其实在抵挡赐律法的主</td><td>走向死地却自以为平安</td></tr>
+    <tr><td>③ 恨恶训诲</td><td>"我怎么恨恶训诲，心中藐视责备"(v12)</td><td>"你们也受了迷惑吗？"</td><td>拒绝唯一能救自己的话</td></tr>
+    <tr><td>④ 在圣会中犯罪</td><td>"我在圣会里，几乎落在诸般恶中"(v14)</td><td>以色列最高宗教议会做出最不公的事</td><td>离神最近的地方，离神最远</td></tr>
+    <tr><td>⑤ 自己造成自己的绳索</td><td>"必被自己的罪孽捉住"(v22)</td><td>他们日后亲手把弥赛亚交给罗马人（约19:15 "除了凯撒，我们没有王"）</td><td>想除掉别人，结果毁了自己</td></tr>
+  </table></div>
+  <div class="key">罪的荒谬，在于它<b>让人用理性去反对真理</b>。人不是因为没有理由才不信，而是因为心不愿意，于是为不信制造理由。比利时信条第14条说得透彻："我们里面的光已经变为黑暗"。</div>
+</section>
+
+<section id="p1">
+  <h2><span class="n">I</span>👮 他们对差役的回应</h2>
+  <p class="lead">差役奉命去抓人，却空手回来，只带回一句话："从来没有像他这样说话的。"(7:46) 首领们的回应，暴露了罪的四重荒谬。</p>
+  <div class="split">
+    <div class="L"><div class="k" style="color:var(--steel)">差役所见</div><p style="font-family:var(--serif);font-size:19px">他们亲耳听见"人若渴了，可以到我这里来喝"<br>他们被话语本身折服<br>他们冒着违抗命令的风险<br><b>证据：亲身经历</b></p></div>
+    <div class="blade" aria-hidden="true"></div>
+    <div class="R"><div class="k" style="color:var(--blood)">首领所说</div><p style="font-family:var(--serif);font-size:19px">"你们也受了迷惑吗？"<br>"官长或是法利赛人岂有信他的？"<br>"这些百姓是被咒诅的"<br><b>证据：没有，只有地位</b></p></div>
+  </div>
+  <div class="grid g2" style="margin-top:16px">
+    <div class="glass">
+      <h3 style="margin-top:0">① 荒谬一：不问"他说了什么"，只问"谁被骗了"</h3>
+      <p>差役报告的是事实：他的话无人可比。首领们本该问"他说了什么？"，却直接给差役贴上"受了迷惑"(planaō，被引入歧途)的标签。<mark>罪不处理证据，只处理说出证据的人。</mark>这是罪最常见的自我保护。</p>
+    </div>
+    <div class="glass">
+      <h3 style="margin-top:0">② 荒谬二：以权威代替真理</h3>
+      <p>"官长或是法利赛人岂有信他的呢？"这是诉诸权威与群体：真理由我们这些有地位的人决定。可是先知的历史正相反：以色列的首领常常是最先拒绝神仆人的人（太23:29-37）。<b>真理不靠投票。</b></p>
+    </div>
+    <div class="glass">
+      <h3 style="margin-top:0">③ 荒谬三：咒诅不懂律法的人，自己却违背律法</h3>
+      <p>"这些不明白律法的百姓是被咒诅的"(7:49)。拉比称普通百姓为"地上的人"（am ha'aretz），常加以轻视。讽刺在于：下一节尼哥底母就指出，<b>正是他们自己在违背律法</b>。真正"不明白律法"的，是坐在公会里的人。</p>
+    </div>
+    <div class="glass">
+      <h3 style="margin-top:0">④ 荒谬四：越是在圣会，越是盲目</h3>
+      <p>他们在住棚节刚刚唱完诗篇118"奉耶和华名来的是应当称颂的"，刚刚看完祭司浇水的仪式，象征神要赐下活水。<b>就在宗教活动的高峰，他们决定除掉活水的源头。</b>这正是箴5:14 "在圣会里，几乎落在诸般恶中"的应验。</p>
+    </div>
+  </div>
+  <div class="hard">差役为什么说对了？不是因为他们比首领聪明，而是因为他们<b>听了</b>。罪人最大的问题不是缺乏信息，而是不肯听。箴5:13 "也不听从我师傅的话，又不侧耳听那教训我的人"。多特信经第三、四项教义第4条提醒我们：人本性中的余光"远不足以使人认识神救赎的道理"。差役的话是真的，但只有圣灵能使人真正归信。</div>
+  <div class="key">"从来没有像他这样说话的"，因为他就是"道"(约1:1)，是"神的智慧"(林前1:24)，是"比所罗门更大的"(太12:42)。箴言5章的父亲说"我儿，要留心我智慧的言语"；在新约，<b>智慧本身成了肉身站在圣殿里说话</b>，人却说听他的人是"受了迷惑"。</div>
+</section>
+
+<section id="p2">
+  <h2><span class="n">II</span>🌙 他们对尼哥底母的回应</h2>
+  <p class="lead">尼哥底母没有宣告"他是基督"，只提出一个程序问题：<mark>"不先听本人的口供，不知道他所做的事，难道我们的律法还定他的罪吗？"</mark>(7:51) 一个温和而合法的问题，换来的是嘲讽。</p>
+  <div class="grid g3">
+    <div class="glass" style="border-color:var(--steel)"><div class="k" style="color:var(--steel)">📜 尼哥底母的根据</div><p>申1:16-17 "无论是弟兄彼此诉讼……都要按公义判断"；申17:4 "你要细细地探听"；申19:18 "审判官要细细地查究"。出23:1-2 "不可随众行恶"。他的话完全出于律法。</p></div>
+    <div class="glass" style="border-color:var(--blood)"><div class="k" style="color:var(--blood)">🎭 他们的回答</div><p>"你也是出于加利利吗？"——<b>人身攻击</b>，把对方归类为"那一群人"。"你且去查考，就可知道加利利没有出过先知。"——<b>错误的事实</b>，并且是他们自己没查考。</p></div>
+    <div class="glass" style="border-color:var(--gold)"><div class="k" style="color:var(--gold)">🤔 他们没回答的</div><p>尼哥底母的问题：律法容不容许未审先判？他们完全没有回答。<b>罪不能回答真理时，就转移话题。</b></p></div>
+  </div>
+  <h3>🔍 "你且去查考"：被自己的话定罪</h3>
+  <div class="tbl"><table>
+    <tr><th>他们的说法</th><th>圣经的事实</th><th>荒谬之处</th></tr>
+    <tr><td>"加利利没有出过先知"</td><td>约拿是迦特希弗人（王下14:25），迦特希弗在加利利，离拿撒勒约5公里</td><td>叫别人查考，自己不查考</td></tr>
+    <tr><td>"加利利出不了好东西"(参约1:46)</td><td>赛9:1-2 "外邦人的加利利……在黑暗中行走的百姓看见了大光"</td><td>弥赛亚的光正应许先照加利利</td></tr>
+    <tr><td>"基督从伯利恒出来"(7:42)</td><td>耶稣正生在伯利恒（太2:1；路2:4-7）</td><td>只要问一句就会知道</td></tr>
+    <tr><td>"我们按律法行"</td><td>律法要求先听口供、细细查究</td><td>以守律法之名违背律法</td></tr>
+  </table></div>
+  <div class="hard">尼哥底母为什么不更勇敢地说"我相信他是基督"？因为他的信心还在成长中。约翰没有美化他，也没有贬低他。神的恩典常常一步一步地工作：<b>约3 他在夜里来，约7 他在会中为公道发声，约19 他在光天化日之下为主收殓。</b>我们不可轻看软弱的开始（赛42:3"压伤的芦苇，他不折断"）。</div>
+  <h3>🧮 箴言5章的光照：罪如何对待"提醒的声音"</h3>
+  <div class="grid g2">
+    <div class="glass"><div class="k">箴5:12-13 的少年人</div><p>"我怎么恨恶训诲，心中藐视责备，也不听从我师傅的话。"少年人在结局时才承认，自己曾经憎恨那提醒他的声音。</p></div>
+    <div class="glass"><div class="k">约7:52 的首领</div><p>尼哥底母就是他们中间那个"师傅的声音"，那位提醒他们按律法行事的人。他们不但不听，还嘲笑他。<b>罪最荒谬的地方，是它把救命的声音当作敌人。</b></p></div>
+  </div>
+  <div class="key">海德堡要理问答第112问（第九诫）把尼哥底母的问题写进了基督徒的伦理："<b>不可未经查问就随同他人轻率地定人的罪</b>"。公会犯的正是这罪。而这罪，我们在家中、教会中、网络上，也天天在犯。</div>
+</section>
+
+<section id="gospel">
+  <h2><span class="n">III</span>✝️ 荒谬的尽头：基督担当了最荒谬的审判</h2>
+  <p class="lead">约7 的会议只是预演。半年后，同一个公会真的把耶稣带到面前，这一次，他们<mark>先定罪，后找证据</mark>（可14:55"寻找见证控告耶稣，要治死他，却寻不着"）。</p>
+  <div class="grid g2">
+    <div class="glass">
+      <h3 style="margin-top:0">⚖️ 人类历史上最荒谬的审判</h3>
+      <p>🔸 无罪的被定为有罪(路23:4)<br>🔸 杀人的巴拉巴被释放(路23:18-25)<br>🔸 赐律法的主被"按律法"治死(约19:7)<br>🔸 "生命的主"被杀(徒3:15)<br>🔸 首领说"除了凯撒，我们没有王"(约19:15)，否认了自己的弥赛亚盼望</p>
+    </div>
+    <div class="glass">
+      <h3 style="margin-top:0">💡 神最大的智慧</h3>
+      <p>但神把人的荒谬变成救恩的器皿。"他既按着神的定旨先见被交与人，你们就借着无法之人的手，把他钉在十字架上杀了"(徒2:23)。<b>人以为是愚蠢的十字架，正是神的智慧</b>（林前1:18-25）。基督被不公地审判，使我们这些真正有罪的人，在神公义的审判台前被宣告无罪。</p>
+    </div>
+  </div>
+  <figure class="fig">
+  <svg viewBox="0 0 960 230" role="img" aria-label="大交换">
+    <g font-size="15" text-anchor="middle">
+      <rect x="30" y="40" width="330" height="140" rx="18" fill="rgba(227,93,93,.13)" stroke="#e35d5d"/>
+      <text x="195" y="72" fill="#ffc7c0" font-weight="700" font-size="17">我们</text>
+      <text x="195" y="100" fill="#efe9dc">喝了"淫妇的蜂蜜"（属灵的淫乱）</text>
+      <text x="195" y="124" fill="#efe9dc">恨恶训诲，拒绝真理</text>
+      <text x="195" y="148" fill="#efe9dc">当被自己的罪如绳索捆绑而死</text>
+      <rect x="600" y="40" width="330" height="140" rx="18" fill="rgba(124,196,120,.13)" stroke="#7cc478"/>
+      <text x="765" y="72" fill="#cdeccb" font-weight="700" font-size="17">基督</text>
+      <text x="765" y="100" fill="#efe9dc">忠信的新郎，从未背约</text>
+      <text x="765" y="124" fill="#efe9dc">"从来没有像他这样说话的"</text>
+      <text x="765" y="148" fill="#efe9dc">被捆绑(约18:12)，喝了苦杯</text>
+    </g>
+    <path d="M365,90 L595,90" stroke="#f0b64a" stroke-width="3" marker-end="url(#ah)"/>
+    <path d="M595,140 L365,140" stroke="#7cc478" stroke-width="3" marker-end="url(#ah)"/>
+    <text x="480" y="80" fill="#f0b64a" font-size="13" text-anchor="middle">我们的罪与茵陈</text>
+    <text x="480" y="165" fill="#7cc478" font-size="13" text-anchor="middle">他的义与活水</text>
+    <text x="480" y="215" fill="#a39c8c" font-size="13" text-anchor="middle">"他被掳去，用强暴的审判"(赛53:8)——荒谬的审判成了我们的赎价</text>
+  </svg>
+  </figure>
+  <p>箴5:4 说罪的结局"苦似茵陈"。在十字架上，有人拿"醋"给耶稣喝(约19:29)，他喝下了罪的苦杯，好叫我们能喝他所赐的活水（约7:37-38）。箴5:22 说罪人"被自己的罪恶如绳索缠绕"；耶稣被捆绑着送去受审，好叫被罪捆绑的人得释放（约8:36）。</p>
+</section>
+
+<section id="parallel">
+  <h2><span class="n">05</span>🔗 类似经文：同一个核心</h2>
+  <div class="tbl"><table>
+    <tr><th>经文</th><th>罪的荒谬</th><th>核心</th></tr>
+    <tr><td>耶 2:13</td><td>离弃活水的泉源，凿出破裂不能存水的池子</td><td>用破池换泉源</td></tr>
+    <tr><td>来 12:16</td><td>以扫因一点食物把长子的名分卖了</td><td>用片刻换永远</td></tr>
+    <tr><td>罗 1:21-23</td><td>自称为聪明，反成了愚拙；将神的荣耀变为偶像</td><td>用受造之物换造物主</td></tr>
+    <tr><td>约 9:24-34</td><td>瞎眼的人说"我从前是眼瞎的，如今能看见了"，法利赛人把他赶出去</td><td>同样拒绝证据、攻击见证人</td></tr>
+    <tr><td>约 11:47-53</td><td>拉撒路复活后，公会决定杀耶稣，还要杀拉撒路(12:10)</td><td>最大的神迹换来最深的敌意</td></tr>
+    <tr><td>徒 4:13-17</td><td>"他们行了明显的神迹……我们也不能说没有"，却仍禁止传道</td><td>承认事实却拒绝顺服</td></tr>
+    <tr><td>雅 1:14-15</td><td>私欲怀了胎就生出罪，罪长成就生出死来</td><td>箴5 的心理过程</td></tr>
+    <tr><td>林前 1:18-25</td><td>十字架在世人看为愚拙，在神看为智慧</td><td>神反转了荒谬</td></tr>
+  </table></div>
+</section>
+
+<section id="loop">
+  <h2><span class="n">06</span>♾️ 四重闭环</h2>
+  <figure class="fig">
+  <svg viewBox="0 0 900 380" role="img" aria-label="罪救赎感恩闭环">
+    <circle cx="450" cy="190" r="140" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="2" stroke-dasharray="6 8"/>
+    <g font-size="15" text-anchor="middle">
+      <circle cx="450" cy="60" r="54" fill="rgba(227,93,93,.25)" stroke="#e35d5d" stroke-width="2"/>
+      <text x="450" y="55" fill="#ffc7c0" font-weight="700">① 罪与愁苦</text><text x="450" y="76" fill="#efe9dc" font-size="12">愚昧过甚·光变黑暗</text>
+      <circle cx="582" cy="255" r="54" fill="rgba(240,182,74,.25)" stroke="#f0b64a" stroke-width="2"/>
+      <text x="582" y="250" fill="#ffe2a6" font-weight="700">② 救赎</text><text x="582" y="271" fill="#efe9dc" font-size="12">智慧受荒谬审判</text>
+      <circle cx="318" cy="255" r="54" fill="rgba(124,196,120,.22)" stroke="#7cc478" stroke-width="2"/>
+      <text x="318" y="250" fill="#cdeccb" font-weight="700">③ 感恩</text><text x="318" y="271" fill="#efe9dc" font-size="12">贞洁·公正·听道</text>
+      <text x="450" y="195" fill="#fff" font-size="18" font-weight="900">🍯→🌿→💧</text><text x="450" y="217" fill="#a39c8c" font-size="12">海德堡 第2问</text>
+    </g>
+    <path d="M502,85 C560,120 590,160 588,196" fill="none" stroke="#f0b64a" stroke-width="2.5" marker-end="url(#ah)"/>
+    <path d="M530,284 C490,312 410,312 370,284" fill="none" stroke="#f0b64a" stroke-width="2.5" marker-end="url(#ah)"/>
+    <path d="M300,203 C300,150 350,100 396,78" fill="none" stroke="#f0b64a" stroke-width="2.5" marker-end="url(#ah)"/>
+    <text x="40" y="40" fill="#a39c8c" font-size="13">蜂蜜（罪的诱惑）→ 茵陈（罪的结局）</text>
+    <text x="40" y="60" fill="#a39c8c" font-size="13">→ 活水（基督的恩典）</text>
+  </svg>
+  </figure>
+  <div class="grid g2">
+    <div class="glass"><div class="k">① 救赎历史闭环</div><p>伊甸园：人听信蛇"甜"的话而堕落 → 以色列在约中屡屡"行淫"拜偶像 → 所罗门写下智慧却自己跌倒 → 约7 首领在圣会中拒绝智慧本身 → 十字架上，人类的荒谬达到顶点，神的智慧也彰显到极致 → 圣灵浇灌，使尼哥底母、差役一类的人归向基督 → 羔羊婚筵，新妇"穿上光明洁白的细麻衣"(启19:8)，再没有淫乱与谎言(启21:8,27)。</p></div>
+    <div class="glass"><div class="k">② 圣约神学闭环</div><p>神与人的关系是<b>婚约式</b>的。行为之约中，亚当背约（何6:7"他们却如亚当背约"）。恩典之约中，神仍追求不忠的妻子（何2:14-20；3:1）。基督是恩典之约的中保和忠信的新郎，他为新妇舍己（弗5:25），在不公的审判中承受了约的咒诅（加3:13），使新妇被洁净、成为圣洁。箴5:18"要喜悦你幼年所娶的妻"在属灵上就是：<b>要以你约中的神为乐，不去别处寻找满足。</b></p></div>
+    <div class="glass"><div class="k">③ 圣经神学闭环</div><p>"两条路"：诗1 → 箴1–9（智慧妇人 / 淫妇）→ 太7:13-14 窄门宽门 → 约14:6 "我就是道路"。"活水"：箴5:15 → 耶2:13 → 约7:37-38 → 启22:1,17。"审判"：申1:16-17 → 约7:51 → 可14:55 → 罗8:33-34 "谁能控告……是神称他们为义了"。三条线都在基督身上会合。</p></div>
+    <div class="glass"><div class="k">④ 改革宗闭环：罪 · 救赎 · 感恩</div><p><b>罪</b>：我们本性"倾向于憎恨神和我的邻舍"（海德堡第5问），光已变为黑暗（比利时信条第14条）。<br><b>救赎</b>：基督被不公审判、被捆绑、喝下苦杯；圣灵穿透刚硬的心，"使不愿意的变为愿意"（多特信经三/四11）。<br><b>感恩</b>：保守身体与心灵贞洁（第108–109问）；不未经查问就定人的罪，喜爱真理（第112问）；像差役一样见证"从来没有像他这样说话的"。</p></div>
+  </div>
+</section>
+
+<section id="angles">
+  <h2><span class="n">07</span>🧭 多重视角解读</h2>
+  <div class="grid g3">
+    <div class="glass"><div class="k">👑 神论</div><p>"人所行的道都在耶和华眼前"(箴5:21)。罪的荒谬之一，是以为没有人看见。神不但看见，还让罪人"被自己的罪孽捉住"(5:22)：审判常常是神任凭人收割自己所种的（罗1:24）。</p></div>
+    <div class="glass"><div class="k">✝️ 基督论</div><p>"从来没有像他这样说话的"是对基督先知职分的见证。他说话带着权柄（太7:29），因为他就是神的道。约7 的首领拒绝的不只是一位教师，而是神亲自的话语。</p></div>
+    <div class="glass"><div class="k">🕊️ 圣灵论</div><p>差役被话语折服、尼哥底母逐渐转变，背后是圣灵的工作（约3:5-8）。没有圣灵，人只会像首领一样用圣经反对基督。</p></div>
+    <div class="glass"><div class="k">🧠 人论</div><p>罪使理性为私欲服务。人先决定不要什么，再寻找理由。改革宗称之为"全然败坏"：不是人什么好事都做不出，而是每一部分（包括理智）都受了污染（多特三/四1）。</p></div>
+    <div class="glass"><div class="k">⛪ 教会论</div><p>"我在圣会里，几乎落在诸般恶中"。教会不是对罪免疫的地方；领袖尤其危险（雅3:1）。长老与传道人要以公会为鉴：按程序、听双方、喜爱真理（太18:15-17；提前5:19-21）。</p></div>
+    <div class="glass"><div class="k">🏠 伦理视角</div><p>箴5 是第七诫的教导：性是婚约中的美好恩赐（5:15-19），不是罪。罪的荒谬在于用偷来的"蜂蜜"换掉神所赐的"活水"。今天的色情与婚外关系，正是同一种骗局。</p></div>
+  </div>
+</section>
+
+<section id="confess">
+  <h2><span class="n">08</span>🏛️ 信条原文（逐字引自 ccifellowship.org）</h2>
+  <p class="note">以下原文由脚本直接从 ccifellowship.org 对应页面提取并逐字比对，只省略了页面上的经文脚注编号。点击标题展开。</p>
+  <details open><summary>海德堡要理问答 第1–2问（主日1）· 唯一的安慰与三件事</summary><div class="ans quote-src"><span class="q">1．问：</span>或生或死，你唯一的安慰是什么？<br><span class="q">答：</span>或生或死，我的身体和灵魂都不属于我自己，而属于我信实的救主耶稣基督。他用自己的宝血完全偿还了我一切的罪债，并且救我脱离魔鬼一切的权势。他如此地保守我，若没有天父的允许，我连一根头发也不能掉落。的确，他叫万事互相效力，使我得救。故此，他也藉着圣灵确保我得到永生，并且使我从今以后甘心乐意地为他而活。<br><br><span class="q">2．问：</span>为了在这样的安慰中喜乐地生或死，你必须知道哪些事呢？<br><span class="q">答：</span>我必须知道三件事：第一，我的罪恶和愁苦有多么深重。第二，我怎样才能得救，并脱离这一切的罪恶和愁苦。第三，我当如何为这样的拯救而感谢神。<p class="src">来源：<a href="https://ccifellowship.org/books/book-of-praise/confessions/heidelberg-catechism/lord-day-1" target="_blank" rel="noopener">海德堡要理问答 · 主日1</a></p></div></details>
+  <details><summary>海德堡要理问答 第3–5问（主日2）· 从律法得知罪</summary><div class="ans quote-src"><span class="q">3．问：</span>你从何处得知你的罪恶和愁苦呢？<br><span class="q">答：</span>从神的律法。<br><br><span class="q">4．问：</span>神的律法对我们有什么要求呢？<br><span class="q">答：</span>基督就此在马太福音第22章中概括地教导我们：“你要尽心、尽性、尽意，爱主你的神。这是诫命中的第一，且是最大的。其次也相仿，就是要爱人如己。这两条诫命是律法和先知一切道理的总纲。”<br><br><span class="q">5．问：</span>你能完全遵守这些诫命吗？<br><span class="q">答：</span>不能，因为我的本性是倾向于憎恨神和我的邻舍的。<p class="src">来源：<a href="https://ccifellowship.org/books/book-of-praise/confessions/heidelberg-catechism/section1/lord-day-2" target="_blank" rel="noopener">海德堡要理问答 · 主日2</a></p></div></details>
+  <details><summary>海德堡要理问答 第6–8问（主日3）· 人性败坏的来源与程度</summary><div class="ans quote-src"><span class="q">6．问：</span>神原本就把人造得如此邪恶和悖逆吗？<br><span class="q">答：</span>不是。恰恰相反，神将人造得甚好，且是按照他自己形像造的，换言之，人有公义和真实的圣洁；目的是要人能正确地认识他的创造者神，衷心地爱他，与他同住在永远的福乐中，并赞美和荣耀他。<br><br><span class="q">7．问：</span>那么，败坏的人性从何而来呢？<br><span class="q">答：</span>从我们的始祖亚当和夏娃在伊甸园中的悖逆和堕落而来。人性因始祖的悖逆和堕落而变得败坏，以至于我们都在罪中成孕而生。<br><br><span class="q">8．问：</span>我们是否如此败坏，以致完全没有能力行任何的善，反倒倾向于诸般的恶呢？<br><span class="q">答：</span>是的。除非神的灵使我们重生。<p class="src">来源：<a href="https://ccifellowship.org/books/book-of-praise/confessions/heidelberg-catechism/section1/lord-day-3" target="_blank" rel="noopener">海德堡要理问答 · 主日3</a></p></div></details>
+  <details><summary>海德堡要理问答 第108–109问（主日41）· 第七诫 ↔ 箴言5</summary><div class="ans quote-src"><span class="q">108．问：</span>神在第七条诫命中教导我们什么？<br><span class="q">答：</span>一切淫乱之事皆为神所咒诅。因此，我们必须从心里憎恶淫乱，无论未婚已婚都要过有贞操、有节制的生活。<br><br><span class="q">109．问：</span>神在这条诫命中只禁止淫乱及类似的可耻之罪吗？<br><span class="q">答：</span>神的旨意是要我们保守自己纯全圣洁，因为我们的身体和灵魂都是圣灵的殿。因此，神禁止一切淫乱的行为、举动、言语、思想和欲望，并一切可能诱使我们淫乱的事。<p class="src">来源：<a href="https://ccifellowship.org/books/book-of-praise/confessions/heidelberg-catechism/section3/part1/lord-day-41" target="_blank" rel="noopener">海德堡要理问答 · 主日41</a></p></div></details>
+  <details><summary>海德堡要理问答 第112问（主日43）· 第九诫 ↔ 尼哥底母</summary><div class="ans quote-src"><span class="q">112．问：</span>神在第九条诫命中的要求是什么？<br><span class="q">答：</span>我不可作假见证陷害人或歪曲人的话，不传播流言蜚语或诽谤人，不论断人，也不可未经查问就随同他人轻率地定人的罪；相反，我要远避一切谎言和欺诈，视之为魔鬼的作为，是在神忿怒的刑罚之下的。无论在法院，还是在其他任何地方，我都要喜爱真理，诚实地述说和承认真理，又要尽力保护和促进邻舍的荣誉和好名声。<p class="src">来源：<a href="https://ccifellowship.org/books/book-of-praise/confessions/heidelberg-catechism/section3/part1/lord-day-43" target="_blank" rel="noopener">海德堡要理问答 · 主日43</a></p></div></details>
+  <details><summary>比利时信条 第十四条 · 论人的被造与堕落以及人不能行真善事</summary><div class="ans quote-src">我们相信神用地上的尘土造人，且是照他自己的形像和样式造的，使人有良善、公义和圣洁。那时，人在凡事上都能合乎神的旨意。然而，人有了这尊贵的地位却既不看重也不感恩，反而听从魔鬼的话，甘受罪的辖制，以至于死和受咒诅。人干犯了从神领受的生命的律；因着罪，他背离了神，即生命的主，也全面败坏了自己的本性。因着这一切，他的身体和灵魂都当受死。<br><br>自从人变得邪恶、乖僻、全然败坏之后，他就失去了所有从神领受的美好恩赐，所留下的只有些许痕迹，但足以叫人无法推诿神的存在。我们里面的光已经变为黑暗，正如圣经教导我们说：“光照在黑暗中，黑暗却不接受光”（约1:5）；在这节经文中，使徒约翰称人类为黑暗。<br><br>因此，我们弃绝一切与圣经相悖的有关人自由意志的教导，因为人已经成为“罪的奴仆”（约8:34），“若不是从天上所赐的，人就不能得什么”（约3:27）。基督既说：“若不是差我来的父吸引人，就没有能到我这里来的”（约6:44），谁还能夸口说自己能行善呢？人若明白“体贴肉体的，就是与神为仇”（罗8:7），谁还能为自己的意志沾沾自喜呢？“属血气的人不领会神圣灵的事”（林前2:14），谁的知识还值得一提呢？简言之，当一个人意识到“并不是我们自己能承担什么事，我们所能承担的，乃是出于神”（林后3:5），谁还敢说这是他自己的作为呢？因此，使徒保罗所说的话，“你们立志行事，都是神在你们心里运行，为要成就他的美意”（腓2:13），今天仍然千真万确，因为若不是出于基督，没有人的悟性或意愿能与神的相符。基督也教导说：“离了我，你们就不能做什么。”（约15:5）<p class="src">来源：<a href="https://ccifellowship.org/books/book-of-praise/confessions/the-belgic-confession/14" target="_blank" rel="noopener">比利时信条 · 第十四条</a></p></div></details>
+  <details><summary>比利时信条 第十五条 · 论原罪</summary><div class="ans quote-src">我们相信由于亚当的悖逆，原罪已传遍全人类。它使人性全然败坏，它还具有遗传性，因而所有人都受其污染，甚至母腹中的婴孩也不例外。它是所有罪的根源。因此，在神的眼中，它极为邪恶和可憎，足以使全人类被定罪。正如水从源头涌流不绝，从原罪而出的罪也不断产生，即使洗礼也不能将它终止或根除。尽管如此，神没有将原罪归给他的儿女，使他们被定罪，反而以他的恩典和怜悯赦免了他们的罪。神的赦罪并不意味着信徒可以活在罪中却高枕无忧，而会使信徒意识到自己的败坏，以至于在急切等候脱离这取死的身体的过程中常常叹息。<p class="src">来源：<a href="https://ccifellowship.org/books/book-of-praise/confessions/the-belgic-confession/15" target="_blank" rel="noopener">比利时信条 · 第十五条</a></p></div></details>
+  <details><summary>多特信经 第三、四项教义 第1、3、4、11条 · 人的败坏与神使人归正</summary><div class="ans quote-src"><b>第1条</b> 起初，人是照着神的形像造的，悟性中具备关于创造主和一切属灵之事的完备的真知识；他的心思和意念正直，情感纯洁。因此，人曾经是完全圣洁的。但是，在魔鬼的煽惑下，人以他的自由意志背叛了神，把自己这些极好的恩赐都剥夺了；同时，他使自己的悟性有了盲区、可怕的昏昧、虚妄的思想以及判断上的错谬，使自己的心思和意念邪恶、叛逆和顽固，又使自己在情感上不洁。<br><br><b>第3条</b> 因此，所有的人都是在罪中成孕而生的，本为可怒之子，不能行出任何善事以拯救自己，反而倾向于作恶，死在罪中，成为罪的奴仆。若没有圣灵使人重生的恩典，人既没有意愿，也没有能力转向神并改邪归正，甚至连预备自己归正的意愿和能力也没有。<br><br><b>第4条</b> 可以肯定，人在堕落之后，本性中仍有一些余光，藉此余光，人对神、对自然事物、对区分善恶仍有一些概念，对美德和外在的好行为也能表现出一些尊重。然而，罪人本性中的余光远不足以使人认识神救赎的道理，也不能使人真正归信。因此，他不会在自然和民事上善用这光。实际上，无论这光是什么，人已经以各种方式全面地污染了它，又以自身的邪恶压制了它。人这样做的结果是使自己的罪在神面前无可推诿。<br><br><b>第11条</b> 神以如下方式在选民中实施他的美好旨意，并在他们中间做使其真正归信的工作：他不仅确保选民听到福音，且藉着圣灵强有力地光照他们的理性，以使他们正确地认识、分辨属圣灵的事；通过使人重生的圣灵有效地做工，神也穿透到人的内心深处，打开并软化那封闭和刚硬的心，给那未受割礼的心施行割礼；神又将新的性情注入他们的意志，使已死的意志复苏，使邪恶的变为良善，使不愿意的变为愿意，使顽梗的变为顺服，他还感动且强化他们的意志，使之像一棵好树，能结出善行的果子。<p class="src">来源：<a href="https://ccifellowship.org/books/book-of-praise/confessions/canons-of-dort/section3-4" target="_blank" rel="noopener">多特信经 · 第三、四项教义</a></p></div></details>
+  <h3>🔗 信条与经文对照</h3>
+  <div class="tbl"><table>
+    <tr><th>信条</th><th>关键句</th><th>对应经文</th></tr>
+    <tr><td>海德堡 第5问</td><td>本性倾向于憎恨神和邻舍</td><td>约7:47-49 首领对差役与百姓的轻蔑</td></tr>
+    <tr><td>海德堡 第8问</td><td>除非神的灵使我们重生</td><td>尼哥底母（约3:3-5 同一段经文是此问的证据）</td></tr>
+    <tr><td>海德堡 第108–109问</td><td>禁止一切淫乱的行为、举动、言语、思想和欲望</td><td>箴5:8 "不可就近她的房门"</td></tr>
+    <tr><td>海德堡 第112问</td><td>不可未经查问就随同他人轻率地定人的罪</td><td>约7:51 尼哥底母的问题</td></tr>
+    <tr><td>比利时信条 第14条</td><td>我们里面的光已经变为黑暗</td><td>箴5:6 "自己还不知道"；约7:52</td></tr>
+    <tr><td>比利时信条 第15条</td><td>原罪是所有罪的根源，如水从源头涌流不绝</td><td>箴5:15-16 泉源的意象</td></tr>
+    <tr><td>多特信经 三/四 第4条</td><td>本性的余光不足以使人认识救赎</td><td>差役的惊叹本身不等于得救</td></tr>
+    <tr><td>多特信经 三/四 第11条</td><td>使不愿意的变为愿意</td><td>尼哥底母从夜里到光中（约19:39）</td></tr>
+  </table></div>
+  <p class="note">另可参：威斯敏斯特小要理问答论第七诫与第九诫（第70–72问、第76–78问），威斯敏斯特信仰告白第6章论人的堕落。</p>
+</section>
+
+<section id="apply">
+  <h2><span class="n">09</span>🙏 应用：五个"不要"，五个"要"</h2>
+  <div class="tbl"><table>
+    <tr><th>不要（罪的荒谬）</th><th>要（恩典的智慧）</th><th>经文</th></tr>
+    <tr><td>🍯 不要用"甜"判断对错</td><td>问结局：它通往死地还是生命？</td><td>箴5:4-5</td></tr>
+    <tr><td>🚪 不要"就近她的房门"</td><td>远离试探的入口：屏幕、关系、场合</td><td>箴5:8；太5:29-30</td></tr>
+    <tr><td>👥 不要以多数与地位定真理</td><td>回到圣经，亲自"查考"</td><td>约7:48；徒17:11</td></tr>
+    <tr><td>🏷️ 不要给说真话的人贴标签</td><td>先听、先查、先问，再下判断</td><td>约7:51；雅1:19</td></tr>
+    <tr><td>🙉 不要恨恶训诲</td><td>感谢那些责备你的人，他们可能救了你</td><td>箴5:12-13；箴27:6</td></tr>
+  </table></div>
+  <div class="grid g3" style="margin-top:14px">
+    <div class="glass" style="border-color:var(--leaf)"><div class="k" style="color:var(--leaf)">💧 已婚者</div><p>"要喜悦你幼年所娶的妻"。在婚姻中培养喜乐，而不只是避免淫乱。贞洁是一份感恩的回应。</p></div>
+    <div class="glass" style="border-color:var(--steel)"><div class="k" style="color:var(--steel)">🌱 未婚与年轻人</div><p>箴5 是父亲写给儿子的。现在就决定你的路。"你所行的道要离她远"，距离是最好的防线。</p></div>
+    <div class="glass" style="border-color:var(--gold)"><div class="k" style="color:var(--gold)">⛪ 教会与长执</div><p>做判断时像尼哥底母：先听本人口供、了解事实。不随众，不扣帽子，按圣经程序处理。</p></div>
+  </div>
+  <div class="key">如果你已经跌倒，箴5 的少年人在"皮肉和身体消毁"时才悔悟；你不必等到那时。今天就来到那位"从来没有像他这样说话的"面前。他对行淫的妇人说："我也不定你的罪"（约8:11），又说"从此不要再犯罪了"。<b>赦免与圣洁，他都给。</b></div>
+</section>
+
+<section id="one">
+  <h2><span class="n">10</span>💡 一句话总结</h2>
+  <div class="glass" style="text-align:center;padding:34px 22px;border-color:var(--gold)">
+    <p style="font-family:var(--serif);font-size:clamp(22px,3.4vw,32px);line-height:1.6;margin:0 auto;max-width:36em"><b style="color:var(--gold)">罪</b>是用<b style="color:var(--gold)">蜂蜜</b>换来<b style="color:var(--blood)">茵陈</b>、用<b style="color:var(--blood)">权势</b>压住<b style="color:var(--steel)">真理</b>的荒谬；<b style="color:var(--leaf)">基督</b>却甘心承受最荒谬的审判，把<b style="color:var(--leaf)">活水</b>赐给愚昧的罪人。</p>
+  </div>
+</section>
+
+<section id="moved">
+  <h2><span class="n">11</span>❤️ 最感动的 3 点</h2>
+  <div class="grid g3">
+    <div class="glass" style="border-color:var(--steel)">
+      <div style="font-size:40px">👮</div>
+      <h3 style="margin-top:4px">1. 最小的人说了最大的真话</h3>
+      <p>差役没有学问、没有地位，冒着丢差事的危险说："从来没有像他这样说话的。"神常常拣选世上软弱的人，叫那强壮的羞愧（林前1:27）。<b>你不需要有地位，才能为基督作见证。</b></p>
+    </div>
+    <div class="glass" style="border-color:var(--leaf)">
+      <div style="font-size:40px">🌙</div>
+      <h3 style="margin-top:4px">2. 尼哥底母的信心在长大</h3>
+      <p>夜里的访客（约3）→ 会中的一句公道话（约7）→ 十字架下的一百斤香料（约19）。他在别人都逃散时站了出来。<b>神不折断压伤的芦苇；软弱的开始，神会带到勇敢的结局。</b></p>
+    </div>
+    <div class="glass" style="border-color:var(--blood)">
+      <div style="font-size:40px">✝️</div>
+      <h3 style="margin-top:4px">3. 他被不公审判，我们被白白称义</h3>
+      <p>公会"不先听本人的口供"就定了他的罪，他却默然不语（赛53:7）。我们本当被公义地定罪，却因他的缘故被宣告无罪。<b>人的荒谬，被神变成了我们的救恩。</b></p>
+    </div>
+  </div>
+</section>
+
+<section id="qa">
+  <h2><span class="n">12</span>💬 讨论题与答案分析</h2>
+  <details><summary>Q1. 为什么说罪是"荒谬"的，而不只是"错误"的？</summary><div class="ans"><p>错误可能出于无知，荒谬是明知后果仍然选择。箴5 的少年人被提前告知结局（5:4-5,9-11），约7 的首领手握律法与先知书，却都选择了死路。<b>分析</b>：圣经称罪人为"愚昧人"，不是说他们智商低，而是说他们的心与理性背道而驰（罗1:21-22）。比利时信条第14条："我们里面的光已经变为黑暗"——不是没有光，而是光被扭曲。</p></div></details>
+  <details><summary>Q2. 箴言5章讲的是淫乱，为什么可以和约7章的宗教领袖放在一起？</summary><div class="ans"><p>两者共有同一个结构：<b>放弃神所赐真实的满足，去追求虚假的东西</b>。箴5 是身体的淫乱，约7 是心灵的"淫乱"：以色列的首领爱自己的地位与传统，过于爱神所差来的那一位（约5:44"你们互相受荣耀，却不求从独一之神来的荣耀"）。<b>分析</b>：旧约先知常把拜偶像称为淫乱（何2；耶3）。箴5:14"在圣会里几乎落在诸般恶中"更把两者直接连在一起。</p></div></details>
+  <details><summary>Q3. 差役们说"从来没有像他这样说话的"，这是不是得救的信心？</summary><div class="ans"><p>不一定。这是真实的印象，也是对基督的见证，但约翰没有告诉我们他们是否归信。<b>分析</b>：多特信经第三、四项教义第4条说，人本性中的余光"远不足以使人认识神救赎的道理，也不能使人真正归信"。被基督的话打动，可以是归信的开始，但还需要圣灵使人重生（海德堡第8问；约3:3-5）。今天很多人也欣赏耶稣的教训，却没有降服于他。</p></div></details>
+  <details><summary>Q4. "官长或是法利赛人岂有信他的呢？"今天有什么类似的说法？</summary><div class="ans"><p>"有学问的人都不信了"、"主流学界早就不接受了"、"大教会都改变立场了"、"大多数人都这样做"。<b>分析</b>：真理不由多数或权威决定，而由神的话决定（赛8:20）。同时，这不是反智：尼哥底母正是一位学者，他的论证完全基于律法。问题不在学问，而在心是否愿意顺服。</p></div></details>
+  <details><summary>Q5. 尼哥底母的做法是勇敢还是不够勇敢？</summary><div class="ans"><p>两者都有。他在敌对的议会中独自提出异议，需要勇气；但他只停留在程序问题，没有公开认信。<b>分析</b>：约翰对他的描述是诚实而温和的。约12:42-43 提到"官长中却有好些信他的，只因法利赛人的缘故，就不承认"。尼哥底母一度可能在这群人中，但到约19:39，他公开站了出来。神的恩典是有进程的。我们不应自满于"暗中的信心"，也不应轻视别人信心的初芽。</p></div></details>
+  <details><summary>Q6. 海德堡要理问答第112问与约7:51有什么关系？在今天怎么实践？</summary><div class="ans"><p>第112问要求"不可未经查问就随同他人轻率地定人的罪"，这正是尼哥底母对公会的提醒，也是申19:18 的原则。<b>实践</b>：1）听到关于某人的负面消息，先问"有没有直接听过他本人的说法？"；2）不转发未经证实的信息；3）在教会纪律中按太18 的程序；4）在网络上不跟风攻击。<b>分析</b>：第九诫不只是不撒谎，更是"尽力保护和促进邻舍的荣誉和好名声"。</p></div></details>
+  <details><summary>Q7. 箴5:15-19 为什么要用那么美的语言描写婚姻中的爱？</summary><div class="ans"><p>因为对付罪最好的方法，不只是"不要"，还有"更好的要"。神所设立的婚姻是"自己井里的活水"，是蒙福的泉源。<b>分析</b>：罪的荒谬在于它让人以为神所禁止的才是最甜的。其实神所赐的才是真正的满足。在属灵上，这指向我们在基督里的满足：人若在基督里满足，就不会去喝"淫妇的蜂蜜"（参诗16:11；约4:13-14）。</p></div></details>
+  <details><summary>Q8. 箴5:22"恶人必被自己的罪孽捉住"在约翰福音中如何应验？</summary><div class="ans"><p>首领们为了保住地位与国家而杀耶稣（约11:48"罗马人要来夺我们的地土和我们的百姓"）。结果在主后70年，罗马人真的来毁了圣殿和城。他们在彼拉多面前说"除了凯撒，我们没有王"（约19:15），亲口放弃了以色列的盼望。<b>分析</b>：罪设计的出路，最后变成它自己的绳索。这也是诗7:15-16 的真理："他掘了坑，又挖深了，竟掉在自己所挖的坑里。"</p></div></details>
+  <details><summary>Q9. 如果罪这么荒谬，为什么我们自己还会犯同样的罪？</summary><div class="ans"><p>因为原罪"如水从源头涌流不绝"（比利时信条第15条），即使是重生的人，仍有残余的败坏（罗7:21-24）。我们也会用理由为罪辩护、给提醒我们的人贴标签、只听想听的。<b>分析</b>：认识罪的荒谬，首先是认识<b>我自己的</b>荒谬（海德堡第3问：从神的律法得知）。然后来到基督面前（第1问），并在感恩中天天治死旧人（第88–90问）。</p></div></details>
+  <details><summary>Q10. 讲道题目问"你看见罪是多么荒谬了吗？"如何真正"看见"？</summary><div class="ans"><p>1）在神的律法面前省察（海德堡第3问）；2）在十字架面前看见罪的代价（罪的荒谬使神的儿子被杀）；3）在圣灵光照下看见自己的心（诗139:23-24）；4）在教会群体中接受劝勉（来3:13"免得你们中间有人被罪迷惑，心里就刚硬了"）。<b>分析</b>：来3:13 的"罪迷惑"与约7:47"受了迷惑"相映：真正被迷惑的，不是相信耶稣的人，而是被罪欺骗的人。</p></div></details>
+</section>
+
+<section id="ext">
+  <h2><span class="n">13</span>🧱 拓展：尼哥底母三部曲</h2>
+  <figure class="fig">
+  <svg viewBox="0 0 960 200" role="img" aria-label="尼哥底母三次出现">
+    <defs><linearGradient id="nk" x1="0" x2="1"><stop offset="0" stop-color="#1c2336"/><stop offset=".5" stop-color="#6c5a2f"/><stop offset="1" stop-color="#f0b64a"/></linearGradient></defs>
+    <rect x="20" y="30" width="920" height="130" rx="20" fill="url(#nk)" opacity=".55"/>
+    <g font-size="15" text-anchor="middle">
+      <text x="170" y="70" fill="#cfe3f2" font-weight="700" font-size="18">🌙 约 3:1-21</text><text x="170" y="96" fill="#efe9dc">夜里来见耶稣</text><text x="170" y="120" fill="#a39c8c" font-size="13">"人若不重生"</text>
+      <text x="480" y="70" fill="#ffe2a6" font-weight="700" font-size="18">🌆 约 7:50-51</text><text x="480" y="96" fill="#efe9dc">在公会中为公道发声</text><text x="480" y="120" fill="#a39c8c" font-size="13">被嘲讽"你也是出于加利利吗"</text>
+      <text x="790" y="70" fill="#fff" font-weight="700" font-size="18">☀️ 约 19:38-42</text><text x="790" y="96" fill="#efe9dc">公开安葬耶稣</text><text x="790" y="120" fill="#a39c8c" font-size="13">约一百斤没药沉香</text>
+    </g>
+    <text x="480" y="190" fill="#a39c8c" font-size="13" text-anchor="middle">从黑夜到白昼：多特信经三/四11 所说"使不愿意的变为愿意，使顽梗的变为顺服"的活见证</text>
+  </svg>
+  </figure>
+  <div class="tbl"><table>
+    <tr><th>拓展主题</th><th>经文</th><th>要点</th></tr>
+    <tr><td>箴言中的两个女人</td><td>箴5；7 / 箴8–9；31</td><td>淫妇（愚昧）vs 智慧妇人；最后的"才德的妇人"</td></tr>
+    <tr><td>所罗门的失败</td><td>王上11:1-13</td><td>写智慧的人也被罪迷惑：没有人能靠自己的智慧得救</td></tr>
+    <tr><td>耶稣受审的程序违法</td><td>可14:53-65；路22:66-71</td><td>夜间审讯、假见证、未审先判，正是约7:51所警告的</td></tr>
+    <tr><td>差役后来？</td><td>徒6:7</td><td>"有许多祭司信从了这道"，圣殿体系中的人后来也归主</td></tr>
+  </table></div>
+</section>
+
+<section id="mind">
+  <h2><span class="n">14</span>🧠 思维导图</h2>
+  <figure class="fig">
+  <svg viewBox="0 0 1000 470" role="img" aria-label="讲章思维导图">
+    <g stroke-width="2" fill="none">
+      <path d="M500,235 C380,235 360,90 250,90" stroke="#f0b64a"/>
+      <path d="M500,235 C380,235 360,235 250,235" stroke="#86b6d8"/>
+      <path d="M500,235 C380,235 360,380 250,380" stroke="#b39cff"/>
+      <path d="M500,235 C620,235 640,90 750,90" stroke="#e35d5d"/>
+      <path d="M500,235 C620,235 640,235 750,235" stroke="#7cc478"/>
+      <path d="M500,235 C620,235 640,380 750,380" stroke="#5cc3c0"/>
+    </g>
+    <rect x="390" y="198" width="220" height="74" rx="37" fill="rgba(240,182,74,.22)" stroke="#f0b64a" stroke-width="2"/>
+    <text x="500" y="230" text-anchor="middle" fill="#fff" font-size="17" font-weight="900">罪是多么荒谬</text>
+    <text x="500" y="253" text-anchor="middle" fill="#a39c8c" font-size="12">箴5 · 约7:45-52</text>
+    <g font-size="13" fill="#efe9dc">
+      <rect x="40" y="50" width="210" height="80" rx="12" fill="rgba(240,182,74,.14)" stroke="#f0b64a"/>
+      <text x="55" y="74" fill="#ffe2a6" font-weight="700" font-size="15">箴言5</text><text x="55" y="96">蜂蜜→茵陈→阴间</text><text x="55" y="116">自己井里的活水</text>
+      <rect x="40" y="195" width="210" height="80" rx="12" fill="rgba(134,182,216,.14)" stroke="#86b6d8"/>
+      <text x="55" y="219" fill="#cfe3f2" font-weight="700" font-size="15">一、对差役</text><text x="55" y="241">不问话只问人·以权代理</text><text x="55" y="261">咒诅百姓·圣会中盲目</text>
+      <rect x="40" y="340" width="210" height="80" rx="12" fill="rgba(179,156,255,.14)" stroke="#b39cff"/>
+      <text x="55" y="364" fill="#e1d6ff" font-weight="700" font-size="15">二、对尼哥底母</text><text x="55" y="386">人身攻击·错误事实</text><text x="55" y="406">叫人查考，自己不查</text>
+      <rect x="750" y="50" width="210" height="80" rx="12" fill="rgba(227,93,93,.14)" stroke="#e35d5d"/>
+      <text x="765" y="74" fill="#ffc7c0" font-weight="700" font-size="15">✝️ 基督</text><text x="765" y="96">最荒谬的审判</text><text x="765" y="116">神最大的智慧</text>
+      <rect x="750" y="195" width="210" height="80" rx="12" fill="rgba(124,196,120,.14)" stroke="#7cc478"/>
+      <text x="765" y="219" fill="#cdeccb" font-weight="700" font-size="15">闭环</text><text x="765" y="241">罪 → 救赎 → 感恩</text><text x="765" y="261">蜂蜜 → 茵陈 → 活水</text>
+      <rect x="750" y="340" width="210" height="80" rx="12" fill="rgba(92,195,192,.14)" stroke="#5cc3c0"/>
+      <text x="765" y="364" fill="#c3efed" font-weight="700" font-size="15">信条</text><text x="765" y="386">海德堡 1-8·108-109·112</text><text x="765" y="406">比利时14-15 · 多特三四</text>
+    </g>
+  </svg>
+  </figure>
+</section>
+
+<section id="cards">
+  <h2><span class="n">15</span>🃏 记忆卡（点击翻转）</h2>
+  <div class="grid g3">
+    <div class="flip" tabindex="0"><div class="in"><div class="f">箴5:3-4 的对比？<small>点击看答案</small></div><div class="b">嘴滴下蜂蜜、口比油更滑；至终却苦似茵陈，快如两刃的刀。</div></div></div>
+    <div class="flip" tabindex="0"><div class="in"><div class="f">箴5 哪一节把罪与"圣会"连在一起？<small>点击看答案</small></div><div class="b">5:14 "我在圣会里，几乎落在诸般恶中。"</div></div></div>
+    <div class="flip" tabindex="0"><div class="in"><div class="f">差役说了什么？<small>点击看答案</small></div><div class="b">"从来没有像他这样说话的。"(约7:46)</div></div></div>
+    <div class="flip" tabindex="0"><div class="in"><div class="f">首领对差役的三句话？<small>点击看答案</small></div><div class="b">你们也受了迷惑吗？官长或法利赛人岂有信他的？这些不明白律法的百姓是被咒诅的。</div></div></div>
+    <div class="flip" tabindex="0"><div class="in"><div class="f">尼哥底母的问题？<small>点击看答案</small></div><div class="b">"不先听本人的口供，不知道他所做的事，难道我们的律法还定他的罪吗？"</div></div></div>
+    <div class="flip" tabindex="0"><div class="in"><div class="f">"加利利没有出过先知"错在哪？<small>点击看答案</small></div><div class="b">约拿是加利利迦特希弗人（王下14:25）；耶稣也生在伯利恒。他们叫人查考，自己却没查。</div></div></div>
+    <div class="flip" tabindex="0"><div class="in"><div class="f">海德堡第112问的关键句？<small>点击看答案</small></div><div class="b">不可未经查问就随同他人轻率地定人的罪。</div></div></div>
+    <div class="flip" tabindex="0"><div class="in"><div class="f">尼哥底母三部曲？<small>点击看答案</small></div><div class="b">约3 夜里来访 → 约7 会中发声 → 约19 公开安葬耶稣。</div></div></div>
+    <div class="flip" tabindex="0"><div class="in"><div class="f">比利时信条第14条一句？<small>点击看答案</small></div><div class="b">"我们里面的光已经变为黑暗"——罪的荒谬是理性被扭曲。</div></div></div>
+  </div>
+</section>
+
+<section id="sum">
+  <h2><span class="n">16</span>✅ 总结列表</h2>
+  <div class="tbl"><table>
+    <tr><th>#</th><th>主题</th><th>箴 5</th><th>约 7</th><th>信条</th><th>一句话</th></tr>
+    <tr><td>1</td><td>🍯 罪的诱惑</td><td>v3, 20</td><td>v48 以权势为真</td><td>海德堡 第5问</td><td>甜与多数都不证明对</td></tr>
+    <tr><td>2</td><td>🙈 罪的盲目</td><td>v6</td><td>v47 "受了迷惑"</td><td>比利时 第14条</td><td>光变为黑暗</td></tr>
+    <tr><td>3</td><td>👮 对差役</td><td>v12-13 恨恶训诲</td><td>v45-49</td><td>多特 三/四 第4条</td><td>不问话，只攻击人</td></tr>
+    <tr><td>4</td><td>🌙 对尼哥底母</td><td>v14 圣会中犯罪</td><td>v50-52</td><td>海德堡 第112问</td><td>以律法之名违背律法</td></tr>
+    <tr><td>5</td><td>🪢 罪的结局</td><td>v22-23</td><td>约19:15</td><td>比利时 第15条</td><td>被自己的罪捆住</td></tr>
+    <tr><td>6</td><td>✝️ 救赎</td><td>v15 活水</td><td>7:37-38</td><td>海德堡 第1问</td><td>基督受荒谬审判，赐我们活水</td></tr>
+    <tr><td>7</td><td>🙌 感恩</td><td>v18 喜悦约中的爱</td><td>19:39 尼哥底母</td><td>海德堡 108-109·112</td><td>贞洁、公正、爱真理</td></tr>
+  </table></div>
+  <div class="key">背下这一句就记住整篇：<b>罪以蜂蜜开始，以茵陈结束；它不问真理，只攻击说真理的人。但那位"从来没有像他这样说话的"，甘心被荒谬地审判，好叫愚昧人喝到活水。</b></div>
+</section>
+
+<div class="foot">
+  <p>信条原文来源：<a href="https://ccifellowship.org/books/book-of-praise/confessions" target="_blank" rel="noopener">ccifellowship.org · 三项联合信条</a>。参考：<a href="https://www.ccreformed.org" target="_blank" rel="noopener">洛杉矶改革宗·恩约教会</a> · <a href="https://www.reformedbeginner.net" target="_blank" rel="noopener">改革宗初学者</a> · <a href="https://canrc.org" target="_blank" rel="noopener">canrc.org</a> · <a href="https://www.urcna.org" target="_blank" rel="noopener">urcna.org</a> · <a href="https://heritagereformed.com" target="_blank" rel="noopener">heritagereformed.com</a> · <a href="https://www.prca.org" target="_blank" rel="noopener">prca.org</a> · <a href="https://opc.org" target="_blank" rel="noopener">opc.org</a> · <a href="https://canadianreformedseminary.ca" target="_blank" rel="noopener">CRTS</a> · <a href="https://www.wts.edu" target="_blank" rel="noopener">WTS</a></p>
+  <p>经文采用和合本。版本 v1 · 2026-11-07 · CCser</p>
+</div>
+</main>
+</div>
+
+<script>
+(function(){
+  var b=document.body, btn=document.getElementById('tocBtn');
+  function mobile(){return matchMedia('(max-width:900px)').matches}
+  btn.addEventListener('click',function(){ if(mobile()) b.classList.toggle('show-toc'); else b.classList.toggle('hide-toc'); });
+  document.querySelectorAll('#toc a').forEach(function(a){a.addEventListener('click',function(){ if(mobile()) b.classList.remove('show-toc'); });});
+  var links=[].slice.call(document.querySelectorAll('#toc a')), prog=document.getElementById('prog');
+  var targets=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  function onScroll(){
+    var h=document.documentElement, max=h.scrollHeight-h.clientHeight;
+    prog.style.width=(max>0?h.scrollTop/max*100:0)+'%';
+    var cur=0; targets.forEach(function(t,i){ if(t && t.getBoundingClientRect().top<120) cur=i; });
+    links.forEach(function(a,i){a.classList.toggle('on',i===cur)});
+  }
+  addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.setAttribute('aria-selected','false'); document.getElementById(x.dataset.t).hidden=true;});
+    t.setAttribute('aria-selected','true'); document.getElementById(t.dataset.t).hidden=false;
+  });});
+  document.querySelectorAll('.flip').forEach(function(f){
+    f.addEventListener('click',function(){f.classList.toggle('on')});
+    f.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();f.classList.toggle('on')}});
+  });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target);} });},{rootMargin:'0px 0px -5% 0px'});
+    document.querySelectorAll('section .glass, section .fig').forEach(function(el){ if(el.getBoundingClientRect().top>innerHeight){el.classList.add('rv','pre'); io.observe(el);} });
+  }
+  /* 背景：琥珀色蜂蜜滴缓缓下落，越往下越变成茵陈的苦绿 */
+  var c=document.getElementById('fx'), x=c.getContext('2d'), reduce=matchMedia('(prefers-reduced-motion:reduce)').matches, drops=[];
+  function size(){c.width=innerWidth;c.height=innerHeight;drops=[];for(var i=0;i<Math.min(70,innerWidth/14);i++)drops.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2+.6,s:Math.random()*.4+.1});}
+  function draw(t){
+    var W=c.width,H=c.height;
+    x.fillStyle='#12110e';x.fillRect(0,0,W,H);
+    var g1=x.createRadialGradient(W*.15,0,0,W*.15,0,W*.6);g1.addColorStop(0,'rgba(240,182,74,.16)');g1.addColorStop(1,'rgba(240,182,74,0)');x.fillStyle=g1;x.fillRect(0,0,W,H);
+    var g2=x.createRadialGradient(W*.85,H,0,W*.85,H,W*.6);g2.addColorStop(0,'rgba(124,196,120,.13)');g2.addColorStop(1,'rgba(124,196,120,0)');x.fillStyle=g2;x.fillRect(0,0,W,H);
+    drops.forEach(function(d){d.y+=d.s;if(d.y>H){d.y=-5;d.x=Math.random()*W;}var k=d.y/H;
+      x.globalAlpha=.55;x.fillStyle='rgb('+Math.round(240-116*k)+','+Math.round(182+14*k)+','+Math.round(74+46*k)+')';
+      x.beginPath();x.arc(d.x,d.y,d.r,0,6.28);x.fill();});
+    x.globalAlpha=1; if(!reduce) requestAnimationFrame(draw);
+  }
+  addEventListener('resize',size); size(); requestAnimationFrame(draw);
+  if(reduce) addEventListener('scroll',function(){draw(0)},{passive:true});
+})();
+</script>
+</body></html>
